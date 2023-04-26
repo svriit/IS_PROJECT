@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% block body %}
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="card card-body">
+        <form action="/update/{{household.id}}" method="POST">
+          <div class="form-group">
+            <input type="text" class="form-control" name="hhid" placeholder="Household ID" value={{household.hhid}}>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="lat" placeholder="Latitudu" value={{household.lat}}>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="Long" placeholder="longitute"value={{household.long}}>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="hhmem" placeholder="total HH Members"value={{household.hhmem}}>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="mfratio" placeholder="male female ratio" value={{household.mfratio}}>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="working" placeholder="Total working age members(0-60)" value={{household.working}}>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="migrated" placeholder="no of Migrated member" value={{household.migrated}}>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="occu" placeholder="Occupation of the HH Head" value={{household.occu}}>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="amount" placeholder="AMOUNT of PDS(kg)" value={{household.amount}}>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="edu" placeholder="Education of HH " value={{household.edu}}>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="max_edu" placeholder="Maximum years of education" value={{household.max_edu}}>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="land_hold" placeholder="Land Holding(Katha)" value={{household.land_hold}}>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="toilet_fac" placeholder="Toilet Facility" value={{household.toilet_fac}}>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="Electricity" placeholder="electricity" value={{household.electricity}}>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="money_house" placeholder="Money require to repair houses" value={{household.money_house}}>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="extended_damage" placeholder="extended damage"value={{household.extended_damage}}>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="loan" placeholder="Amount of Loan" value={{household.loan}}>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="crop_loss" placeholder="Extent of crop loss" value={{household.crop_loss}}>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="annu_income" placeholder="Total Annual Income" value={{household.annu_income}}>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
