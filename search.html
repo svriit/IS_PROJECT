@@ -1,0 +1,150 @@
+
+<html>
+  <head>
+    <title>Search Results</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+  
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+  </head>
+  <body>
+<span id="intro"></span>
+<h1>Search Results</h1>
+<span id="intro"></span>
+<div class="row">
+  <div class="container p-1 m-3">
+  <div class="col-md-8">
+    <table class="styled-table" style="width:100%">
+       <thead>
+        <tr>
+          <th>Household Id</th>
+          <th>Lat</th>
+          <th>Long</th>
+          <th>Total HH Members</th>
+          <th>Male female ratio</th>
+          <th>Total working age members(0-60)</th>
+          <th>no of Migrated member</th>
+          <th>Occupation of the HH Head</th>
+          <th>AMOUNT of PDS(kg)</th>
+          <th>Education of HH</th>
+          <th>Maximum years of education</th>
+          <th>Land Holding(Katha)</th>
+          <th>House type</th>
+          <th>Toilet Facility</th>
+          <th>Electricity</th>
+          <th>Money require to repair houses</th>
+          <th>Extent of House Damage</th>
+          <th>Amount of Loan</th>
+          <th>Extent of crop loss</th>
+          <th>Total Annual Income</th>
+
+
+        </tr>
+      </thead>
+      <table>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+              <!--<td>{{row[0]}}</td>-->
+              <td>{{row[1]}}</td>
+              <td>{{row[2]}}</td>
+              <td>{{row[3]}}</td>
+              <td>{{row[4]}}</td>
+              <td>{{row[5]}}</td>
+              <td>{{row[6]}}</td>
+              <td>{{row[7]}}</td>
+              <td>{{row[8]}}</td>
+              <td>{{row[9]}}</td>
+              <td>{{row[10]}}</td>
+              <td>{{row[11]}}</td>
+              <td>{{row[12]}}</td>
+              <td>{{row[13]}}</td>
+              <td>{{row[14]}}</td>
+              <td>{{row[15]}}</td>
+              <td>{{row[16]}}</td>
+              <td>{{row[17]}}</td>
+              <td>{{row[18]}}</td>
+              <td>{{row[19]}}</td>
+              <td>{{row[20]}}</td>
+              <!-- <td width="160">
+                <a href="/edit/{{row[0]}}" class="btn btn-secondary btn-sm">edit</a>
+                <a href="/delete/{{row[0]}}" class="btn btn-danger btn-delete btn-sm">delete</a>
+              </td> -->
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+    <style>
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto');
+*{
+ margin:0;
+ padding: 0;
+ outline: 0;
+}
+body {
+background-color: #313133;
+}
+ .filter{  
+ position: absolute;
+ left: 0;
+ top: 0;
+ bottom: 0;
+ right: 0;
+  z-index: 1;
+ background: rgb(233,76,161),width=2320;
+background: -moz-linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100% ,width=2320);
+background: -webkit-linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100%, width=2320);
+ background: linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100%, width=2320);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e94ca1",endColorstr="#c74ae9",GradientType=1);
+opacity: .7;
+} 
+table{
+ /* position: absolute;
+ z-index: 2;
+ left: 50%;
+ top: 50%;
+ transform: translate(-50%,-50%); */
+ margin-top: 30px;
+ width: 60%; 
+ border-collapse: collapse;
+ border-spacing: 0;
+ box-shadow: 0 2px 15px rgba(64,64,64,.7);
+ border-radius: 12px 12px 0 0;
+ overflow: hidden;
+
+}
+td{
+ padding: 15px 39px;
+ text-align: center;
+}
+th{
+ padding: 15px 23px;
+ text-align: center;
+ 
+
+}
+th{
+ background-color: #ba68c8;
+ color: #fafafa;
+ font-family: 'Open Sans',Sans-serif;
+ font-weight: 200;
+ text-transform: uppercase;
+
+}
+tr{
+ width: 100%;
+ background-color: #fafafa;
+ font-family: 'Montserrat', sans-serif;
+}
+tr:nth-child(even){
+ background-color: #eeeeee;
+}
+
+      </style>
+  </body>
+</html>
