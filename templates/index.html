@@ -1,0 +1,398 @@
+{% extends "layout_index.html" %}
+{% block body %}
+
+<div class="center" >
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="loading">Loading</div>
+</div>
+<script>
+function waveout(){
+  document.getElementsByClassName("center")[0].style.display="none";
+}
+setTimeout(waveout,5000);
+</script>
+<div class="wrap">
+  <a href="{{url_for('render_map')}}"><button class="button" > View Map</button></a>
+</div>
+<div id="wrap">
+  <form action="/search" method="POST">
+  <input id="search" name="search_term" type="text" placeholder="What're we looking for ?">
+  <input id="search_submit" value="Search" type="submit">
+  </form>
+</div>
+<span id="intro"></span>
+<div class="row">
+  <div class="col-md-8">
+    <!-- <table id="example" class="table table-striped table-bordered" style="width:100%"> -->
+    <table  class="table table-sortable" style="width:100%">
+      <thead>
+        <tr>
+          <th>Household Id</th>
+          <th>Lat</th>
+          <th>Long</th>
+          <th>Total HH Members</th>
+          <th>Male female ratio</th>
+          <th>Total working age members(0-60)</th>
+          <th>no of Migrated member</th>
+          <th>Occupation of the HH Head</th>
+          <th>AMOUNT of PDS(kg)</th>
+          <th>Education of HH</th>
+          <th>Maximum years of education</th>
+          <th>Land Holding(Katha)</th>
+          <th>House type</th>
+          <th>Toilet Facility</th>
+          <th>Electricity</th>
+          <th>Money require to repair houses</th>
+          <th>Extent of House Damage</th>
+          <th>Amount of Loan</th>
+          <th>Extent of crop loss</th>
+          <th>Total Annual Income</th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in list_users %}
+        <tr>
+          <td>{{row[0]}}</td>
+          <td>{{row[1]}}</td>
+          <td>{{row[2]}}</td>
+          <td>{{row[3]}}</td>
+          <td>{{row[4]}}</td>
+          <td>{{row[5]}}</td>
+          <td>{{row[6]}}</td>
+          <td>{{row[7]}}</td>
+          <td>{{row[8]}}</td>
+          <td>{{row[9]}}</td>
+          <td>{{row[10]}}</td>
+          <td>{{row[11]}}</td>
+          <td>{{row[12]}}</td>
+          <td>{{row[13]}}</td>
+          <td>{{row[14]}}</td>
+          <td>{{row[15]}}</td>
+          <td>{{row[16]}}</td>
+          <td>{{row[17]}}</td>
+          <td>{{row[18]}}</td>
+          <td>{{row[19]}}</td>
+          <td>{{row[20]}}</td>
+          <!-- <td width="160">
+            <a href="/edit/{{row[0]}}" class="btn btn-secondary btn-sm">edit</a>
+            <a href="/delete/{{row[0]}}" class="btn btn-danger btn-delete btn-sm">delete</a>
+          </td> -->
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto');
+*{
+ margin:0;
+ padding: 0;
+ outline: 0;
+}
+body{
+  background-image: url(milky-way-2695569__340.jpg);
+}
+
+ .filter{  
+ position: absolute;
+ left: 0;
+ top: 0;
+ bottom: 0;
+ right: 0;
+  z-index: 1;
+ background: rgb(233,76,161),width=2320;
+background: -moz-linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100% ,width=2320);
+background: -webkit-linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100%, width=2320);
+ background: linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100%, width=2320);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e94ca1",endColorstr="#c74ae9",GradientType=1);
+opacity: .7;
+} 
+table{
+ /* position: absolute;
+ z-index: 2;
+ left: 50%;
+ top: 50%;
+ transform: translate(-50%,-50%); */
+ margin-top: 30px;
+ width: 60%; 
+ border-collapse: collapse;
+ border-spacing: 0;
+ box-shadow: 0 2px 15px rgba(64,64,64,.7);
+ border-radius: 12px 12px 0 0;
+ overflow: hidden;
+
+}
+td , th{
+ padding: 15px 20px;
+ text-align: center;
+ 
+
+}
+th{
+ background-color: #ba68c8;
+ color: #fafafa;
+ font-family: 'Open Sans',Sans-serif;
+ font-weight: 200;
+ text-transform: uppercase;
+
+}
+tr{
+ width: 100%;
+ background-color: #fafafa;
+ font-family: 'Montserrat', sans-serif;
+}
+tr:nth-child(even){
+ background-color: #eeeeee;
+}
+
+/* //loader
+ */
+ .center {
+  height: 130vh;
+  width: 2350px;
+  display: flex;
+  
+  justify-content: center;
+  align-items: center; 
+  background: #000;
+}
+.loading {
+  text-align: left;
+  color: #fafafa;
+  justify-content: left;
+  align-items:left;
+  font-family: Copperplate; 
+  font-size: 24px; 
+  font-style: italic;
+   font-variant: normal; 
+   font-weight: 700px; 
+   line-height: 12px;
+   size: 20px; 
+
+}
+.wave {
+  width: 5px;
+  height: 100px;
+  background: linear-gradient(45deg, cyan, #fff);
+  margin: 10px;
+  animation: wave 1s linear infinite;
+  border-radius: 20px;
+}
+.wave:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.wave:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.wave:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.wave:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.wave:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.wave:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.wave:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.wave:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.wave:nth-child(10) {
+  animation-delay: 0.9s;
+}
+html, body {
+  height: 100%;
+}
+
+.wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  min-width: 41px;
+  min-height: 60px;
+  margin-left: 30px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #313133;
+  background: #4FD1C5;
+  background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(79,209,197,.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
+  }
+
+button::before {
+content: '';
+  border-radius: 1000px;
+  min-width: 41px;
+  min-height:60px ;
+  box-shadow: 0 0 60px rgba(0,255,203,.64);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all .3s ease-in-out 0s;
+}
+
+.button:hover, .button:focus {
+  color: #313133;
+  transform: translateY(-6px);
+}
+
+button:hover::before, button:focus::before {
+  opacity: 1;
+}
+
+button::after {
+  content: '';
+  width: 41px; height: 60px;
+  border-radius: 100%;
+  border: 6px solid #00FFCB;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+button:hover::after, button:focus::after {
+  animation: none;
+  display: none;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+.table-sortable th {
+	cursor: pointer;
+}
+
+.table-sortable .th-sort-asc::after {
+	content: "\25b4";
+}
+
+.table-sortable .th-sort-desc::after {
+	content: "\25be";
+}
+
+.table-sortable .th-sort-asc::after,
+.table-sortable .th-sort-desc::after {
+	margin-left: 5px;
+}
+
+.table-sortable .th-sort-asc,
+.table-sortable .th-sort-desc {
+	background: rgba(0, 0, 0, 0.527);
+}
+
+#wrap {
+  margin: -54px -411px;
+  /* display: inline-block; */
+  position: relative;
+  height: 30px;
+  margin-left: 30px;
+  float: right;
+  padding: 0;
+  position: relative;
+}
+
+input[type="text"] {
+  height: 60px;
+  font-size: 55px;
+  display: inline-block;
+  font-family: "Lato";
+  font-weight: 100;
+  border: none;
+  outline: none;
+  color: #555;
+  padding: 3px;
+  padding-right: 60px;
+  width: 0px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  z-index: 3;
+  transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
+  cursor: pointer;
+}
+
+input[type="text"]:focus:hover {
+  border-bottom: 1px solid #BBB;
+}
+
+input[type="text"]:focus {
+  width: 700px;
+  z-index: 1;
+  border-bottom: 1px solid #BBB;
+  cursor: text;
+}
+input[type="submit"] 
+{
+  height: 67px;
+  width: 63px;
+  display: inline-block;
+  color:red;
+  /* float:right; */
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADNQTFRFU1NT9fX1lJSUXl5e1dXVfn5+c3Nz6urqv7+/tLS0iYmJqampn5+fysrK39/faWlp////Vi4ZywAAABF0Uk5T/////////////////////wAlrZliAAABLklEQVR42rSWWRbDIAhFHeOUtN3/ags1zaA4cHrKZ8JFRHwoXkwTvwGP1Qo0bYObAPwiLmbNAHBWFBZlD9j0JxflDViIObNHG/Do8PRHTJk0TezAhv7qloK0JJEBh+F8+U/hopIELOWfiZUCDOZD1RADOQKA75oq4cvVkcT+OdHnqqpQCITWAjnWVgGQUWz12lJuGwGoaWgBKzRVBcCypgUkOAoWgBX/L0CmxN40u6xwcIJ1cOzWYDffp3axsQOyvdkXiH9FKRFwPRHYZUaXMgPLeiW7QhbDRciyLXJaKheCuLbiVoqx1DVRyH26yb0hsuoOFEPsoz+BVE0MRlZNjGZcRQyHYkmMp2hBTIzdkzCTc/pLqOnBrk7/yZdAOq/q5NPBH1f7x7fGP4C3AAMAQrhzX9zhcGsAAAAASUVORK5CYII=) center center no-repeat;
+  text-indent: -10000px;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  cursor: pointer;
+  opacity: 0.4;
+  cursor: pointer;
+  transition: opacity .4s ease;
+}
+
+input[type="submit"]:hover {
+  opacity: 0.8;
+}
+
+</style>
+{% endblock %}
